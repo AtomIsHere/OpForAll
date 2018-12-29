@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:4.0.0'
+    }
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '4.0.0'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
+    id 'java'
+}
+
+group 'com.github.atomishere'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://jitpack.io'}
+    maven { url 'https://repo.inventivetalent.org/content/groups/public/' }
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+shadowJar {
+    baseName = 'OpForAll-Shadowed'
+    classifier = null
+    version = null
+}
+
+dependencies {
+    compileOnly 'com.github.AtomIsHere:SpigotJson:d922d53'
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'org.inventivetalent:particleapi:2.1.1'
+    shadow 'org.reflections:reflections:0.9.11'
+}
